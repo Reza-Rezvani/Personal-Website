@@ -113,7 +113,7 @@
 						<div class="feature-img">
 							<img class="img-fluid" src="{% static 'img/blog/feature-img1.jpg' %}" alt="">
 						</div>
-						<a class="posts-title" href="blog-single.html">
+						<a class="posts-title" href="{% url 'blog:single' pid=post.id %}">
 							<h3>{{post.title}}</h3>
 						</a>
 						<p class="excert">
