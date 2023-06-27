@@ -1,3 +1,4 @@
+{% load humanize %}
 {% load static %}
 
 
@@ -14,6 +15,7 @@
                     <h6>{{post.title}}</h6>
                 </a>
                 <p>{{post.published_date|date:"d M Y"}}</p>
+                <p>{{post.published_date|naturaltime}}</p>
             </div>
         </div>
         {% endfor %}
