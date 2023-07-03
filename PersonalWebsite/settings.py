@@ -48,7 +48,7 @@ INSTALLED_APPS = [
 ]
 
 # sites framework
-SITE_ID = 2
+SITE_ID = 3
 
 
 # robots 
