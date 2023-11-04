@@ -12,7 +12,7 @@ def blog_view(request,**kwargs):
     posts = Post.objects.filter(status=1).order_by('-published_date')
     if kwargs.get('cat_name') != None:
         posts = posts.filter(category__name=kwargs['cat_name'])
-    if kwargs.get('author_name') != None:
+    if kwargs.get('author_username') != None:
         posts = posts.filter(category__name=kwargs['author_username'])
     if kwargs.get('tag_name') != None:
         posts = posts.filter(tags__name__in=[kwargs['tag_name']])
@@ -33,7 +33,7 @@ def blog_view(request,**kwargs):
 def blog_single(request, pid):
     if request.method == 'POST':
         form = CommentForm(request.POST)
-        if form.is_valid():
+        if form.is_valid(): 
             form.save()
             messages.add_message(request,messages.SUCCESS,'your comment submited successfull')
         else:
