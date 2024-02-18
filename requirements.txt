@@ -1,23 +1,20 @@
-Package                    Version
--------------------------- --------
-
-asgiref                    3.6.0
-bleach                     6.1.0
-captcha                    0.5.0
-Django                     3.2.19
-django-debug-toolbar       4.2.0
-django-extensions          3.2.3
-django-multi-captcha-admin 2.0.0
-django-ranged-response     0.2.0
-django-robots              6.1
-django-simple-captcha      0.5.20
-django-summernote          0.8.20.0
-django-taggit              4.0.0
-lxml                       4.9.3
-Pillow                     10.0.1
-pip                        23.2.1
-pytz                       2023.3
-robots                     0.1.5
-six                        1.16.0
-sqlparse                   0.4.4
-webencodings               0.5.1
+django                     >3.2,<3.3
+asgiref                    
+bleach                     
+captcha                    
+django-debug-toolbar       
+django-extensions          
+django-multi-captcha-admin 
+django-ranged-response     
+django-robots              
+django-simple-captcha      
+django-summernote          
+django-taggit             
+lxml                    
+Pillow                     
+pip                     
+pytz                       
+robots                   
+six                       
+sqlparse                   
+webencodings               
