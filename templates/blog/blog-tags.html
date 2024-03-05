@@ -1,7 +1,7 @@
 {% load static %}
 
-<div class="single-sidebar-widget tag-cloud-widget">
-    <h4 class="tagcloud-title">Tag Clouds</h4>
+<div class="single-sidebar-widget tag-cloud-widget" style="font-family: IRANSansX;">
+    <h4 class="tagcloud-title" style="font-family: IRANSansX;">تگ یا برچسب</h4>
     <ul>
         {% for tag in post.tags.all %}
         <li><a href="{% url 'blog:tag' tag_name=tag.name %}">{{tag.name}}</a></li>

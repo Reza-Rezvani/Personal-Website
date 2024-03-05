@@ -5,16 +5,16 @@
 {% block content %}
 
 <!-- start banner Area -->
-<section class="relative about-banner">
+<section class="relative about-banner" style="font-family: IRANSansX;">
 	<div class="overlay overlay-bg"></div>
 	<div class="container">
 		<div class="row d-flex align-items-center justify-content-center">
 			<div class="about-content col-lg-12">
-				<h1 class="text-white">
+				<h1 class="text-white" style="font-family: IRANSansX;">
 					{{post.title}}
 				</h1>
-				<p class="text-white link-nav"><a href="{% url 'website:index' %}">Home </a> <span
-						class="lnr lnr-arrow-right"></span><a href="{% url 'blog:index' %}">Blog </a> <span
+				<p class="text-white link-nav"><a href="{% url 'website:index' %}">صفحه اصلی </a> <span
+						class="lnr lnr-arrow-right"></span><a href="{% url 'blog:index' %}">وبلاگ </a> <span
 						class="lnr lnr-arrow-right"></span>{{post.title}}</p>
 			</div>
 		</div>
@@ -23,7 +23,7 @@
 <!-- End banner Area -->
 
 <!-- Start post-content Area -->
-<section class="post-content-area single-post-area">
+<section class="post-content-area single-post-area" style="font-family: IRANSansX;">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8 posts-list">
@@ -40,59 +40,26 @@
 									class="lnr lnr-user"></span></p>
 							<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{post.published_date|date:"d M Y"}}</a> <span
 									class="lnr lnr-calendar-full"></span></p>
-							<p class="view col-lg-12 col-md-12 col-6"><a href="#">{{post.counted_views}} Views</a> <span
+							<p class="view col-lg-12 col-md-12 col-6"><a href="#">{{post.counted_views}} بازدید</a> <span
 									class="lnr lnr-eye"></span></p>
-							<p class="comments col-lg-12 col-md-12 col-6"><a href="#">{{ comments|length }} Comments</a> <span
+							<p class="comments col-lg-12 col-md-12 col-6"><a href="#">{{ comments|length }} کامنت</a> <span
 									class="lnr lnr-bubble"></span></p>
 							<ul class="social-links col-lg-12 col-md-12 col-6">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+								<li><a href="#"><i class="fa fa-telegram"></i></a></li>
 								<li><a href="#"><i class="fa fa-github"></i></a></li>
-								<li><a href="#"><i class="fa fa-behance"></i></a></li>
+								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-lg-9 col-md-9">
-						<h3 class="mt-20 mb-20">{{post.title}}</h3>
-						<p class="excert">
+						<h3 class="mt-20 mb-20" style="font-family: IRANSansX;text-align: right;">{{post.title}}</h3>
+						<p class="excert" style="text-align: right;">
 							{{post.content}}
 						</p>
 					</div>
 				</div>
-				<div class="navigation-area">
-					<div class="row">
-						<div
-							class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-							<div class="thumb">
-								<a href="#"><img class="img-fluid" src="{% static 'img/blog/prev.jpg' %}" alt=""></a>
-							</div>
-							<div class="arrow">
-								<a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
-							</div>
-							<div class="detials">
-								<p>Prev Post</p>
-								<a href="#">
-									<h4>Space The Final Frontier</h4>
-								</a>
-							</div>
-						</div>
-						<div
-							class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
-							<div class="detials">
-								<p>Next Post</p>
-								<a href="#">
-									<h4>Telescopes 101</h4>
-								</a>
-							</div>
-							<div class="arrow">
-								<a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
-							</div>
-							<div class="thumb">
-								<a href="#"><img class="img-fluid" src="{% static 'img/blog/next.jpg' %}" alt=""></a>
-							</div>
-						</div>
-					</div>
-				</div>
+	
 				<!--
 					<div class="comments-area">
 					<div id="disqus_thread"></div>
@@ -118,14 +85,14 @@
 				-->
 				
 				<div class="comments-area">
-					<h4>{{ comments|length }} Comments</h4>
+					<h4 style="font-family: IRANSansX;">{{ comments|length }} : کامنت</h4>
 					<div class="comment-list">
 					{% for comment in comments %}
 					
 						<div class="single-comment justify-content-between d-flex">
 							<div class="user justify-content-between d-flex">
 								<div class="thumb">
-									<img src="{% static 'img/blog/c1.jpg' %}" alt="">
+									<img src="{% static 'img/blog/c5.jpg' %}" alt="">
 								</div>
 								<div class="desc">
 									<h5><a href="#">{{comment.name}}</a></h5>
@@ -141,12 +108,12 @@
 							</div>-->
 						</div>
 						{% empty %}
-						<h5>no comments here be the first one to tell your thoughts</h5>
+						<h5 style="font-family: IRANSansX;text-align: center;">کامنتی گذاشته نشده است . اولین کامنت را شما بگذارید</h5>
 					{% endfor %}
 					</div>
 				</div>
-				<div class="comment-form">
-					<h4>Leave a Comment</h4>
+				<div class="comment-form" style="font-family: IRANSansX;">
+					<h4 style="font-family: IRANSansX;">کامنت بگذارید</h4>
 					<form method="post" action='{% url "blog:single" pid=post.id %}'>
 						{% csrf_token %}
 						<input type="hidden" name="post" value="{{post.id}}">
@@ -156,25 +123,25 @@
 						{% else %}
 						<div class="form-group form-inline">
 							<div class="form-group col-lg-6 col-md-12 name">
-								<input type="text" class="form-control" name="name" placeholder="Enter Name"
-									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
+								<input type="text" class="form-control" name="name" placeholder="اسم خود را وارد کنید"
+									onfocus="this.placeholder = ''" onblur="this.placeholder = 'اسم خود را وارد کنید'">
 							</div>
 							<div class="form-group col-lg-6 col-md-12 email">
-								<input type="email" class="form-control" name="email" placeholder="Enter email address"
-									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
+								<input type="email" class="form-control" name="email" placeholder="ایمیل خود را وارد کنید"
+									onfocus="this.placeholder = ''" onblur="this.placeholder = 'ایمیل خود را وارد کنید'">
 							</div>
 						</div>
 						{% endif %}
 						<div class="form-group">
-							<input type="text" class="form-control" name="subject" placeholder="Subject"
-								onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
+							<input type="text" class="form-control" name="subject" placeholder="موضوع"
+								onfocus="this.placeholder = ''" onblur="this.placeholder = 'موضوع'">
 						</div>
 						<div class="form-group">
-							<textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege"
-								onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'"
+							<textarea class="form-control mb-10" rows="5" name="message" placeholder="پیام"
+								onfocus="this.placeholder = ''" onblur="this.placeholder = 'پیام'"
 								required=""></textarea>
 						</div>
-						<button type="submit" class="primary-btn text-uppercase">Post Comment</button>
+						<button type="submit" class="primary-btn text-uppercase">تایید کامنت</button>
 					</form>
 					{% if messages %}
 			{% for message in messages %}
@@ -209,9 +176,9 @@
 
 					{% latestposts 2 %}
 
-					{% include 'blog/blog-ads.html' %}
+					
 
-					{% include 'blog/blog-newsletter.html' %}
+					
 
 					{% include 'blog/blog-tags.html' %}
 				</div>

@@ -2,8 +2,8 @@
 {% load static %}
 
 
-<div class="single-sidebar-widget popular-post-widget">
-    <h4 class="popular-title">Popular Posts</h4>
+<div class="single-sidebar-widget popular-post-widget" style="font-family: IRANSansX;">
+    <h4 class="popular-title" style="font-family: IRANSansX;">برترین پست ها</h4>
     <div class="popular-post-list">
         {% for post in posts %}
         <div class="single-post-list d-flex flex-row align-items-center">
@@ -12,7 +12,7 @@
             </div>
             <div class="details">
                 <a href="{% url 'blog:single' pid=post.id %}">
-                    <h6>{{post.title}}</h6>
+                    <h6 style="font-family: IRANSansX;">{{post.title}}</h6>
                 </a>
                 <p>{{post.published_date|date:"d M Y"}}</p>
                 <p>{{post.published_date|naturaltime}}</p>

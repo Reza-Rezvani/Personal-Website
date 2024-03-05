@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+        </div>
+    </div>
+</header>
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder" style="color: coral;font-family: IRANSansX;">سبد خرید شما</h1>
+            <br>
+            <p class="lead fw-normal text-white-50 mb-0"  style="font-family: IRANSansX;">میتوانید هر آنچه دوست دارید سفارش دهید</p>
+        </div>
+    </div>
+</header>
+<br><br><br>
+{% if cart_products %}
+{% for product in cart_products %}
+<div class="container">
+    <div class="card mb-3">
+        <div class="row g-0">
+        <div class="col-md-4">
+            <img src="{{ product.picture.url }}" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+            <h2 class="card-title" style="font-family: IRANSansX; text-align:right;">{{ product.name }}</h2>
+            <p class="card-text" style="font-family: IRANSansX; text-align:right;margin-right: 10px;">{{ product.description }}</p>
+            <h6 style="color: rgb(211, 52, 52);">
+                <span style="font-family: IRANSansX;">قیمت</span> :  {{product.price | intcomma}} <span style="font-family: IRANSansX;">تومان</span> 
+             </h6>
+            <br>
+            
+
+            <button class="btn btn-danger delete-product" type="button" data-index="{{ product.id }}" style="font-family: IRANSansX;">حذف محصول</button>
+            <button class="btn btn-secondary" type="button" style="font-family: IRANSansX;margin-left: 6px;">خرید محصول</button>
+
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<br><br><br>
+
+{% else %}
+<br>
+<center><h2 class="container" style="font-family: IRANSansX;">سبد خرید شما خالی است <span>&#128531</span></h2></center>
+{% endif %}
+<br><br><br><br>
+
+<script>
+    $(document).on('click','.delete-product', function(e){
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '{% url 'cart:cart_delete' %}',
+            data:{
+                product_id: $(this).data('index'),
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'post'
+            },
+    
+            success: function(json) {
+                //console.log(json)
+                //document.getElementById('cart_quantity').textContent = json.qty
+                location.reload();
+            },
+            error: function(xhr, errmsg, err) {
+    
+            }
+    
+        })
+    })
+    </script>
+    
+
+
+{% endblock %}

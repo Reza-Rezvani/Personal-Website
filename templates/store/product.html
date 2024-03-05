@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% load humanize %}
+
+
+<!-- start banner Area -->
+<section class="relative about-banner" style="font-family: IRANSansX;">
+	<div class="overlay overlay-bg"></div>
+	<div class="container">
+		<div class="row d-flex align-items-center justify-content-center">
+			<div class="about-content col-lg-12">
+				<h1 class="text-white" style="font-family: IRANSansX;">
+					{{product.name}}
+				</h1>
+				<p class="text-white link-nav"><a href="{% url 'website:index' %}">صفحه اصلی</a> <span
+						class="lnr lnr-arrow-right"></span><a href="{% url 'shop:index' %}">فروشگاه </a> <span
+						class="lnr lnr-arrow-right"></span>{{product.name}}</p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End banner Area -->
+
+<br><br><br><br><br><br>
+
+
+<div class="container">
+    <div class="card mb-3">
+        <div class="row g-0">
+        <div class="col-md-4">
+            <img src="{{ product.picture.url }}" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body" style="font-family: IRANSansX;">
+            <h2 class="card-title" style="font-family: IRANSansX; text-align:right;">{{ product.name }}</h2>
+            <p class="card-text" style="font-family: IRANSansX; text-align:right;margin-right: 10px;">{{ product.description }}</p>
+            <h6 style="color: rgb(211, 52, 52);">
+               <span style="font-family: IRANSansX;">قیمت</span> :  {{product.price | intcomma}} <span style="font-family: IRANSansX;">تومان</span> 
+            </h6>
+            <br>
+            {% if request.user.is_authenticated %}
+            <button class="btn btn-secondary" type="button" value="{{ product.id }}" id="add-cart">اضافه به سبد خرید</button>
+            <button class="btn btn-secondary" type="button"><a href="{% url 'shop:index' %}" style="color: aliceblue;">بازگشت به فروشگاه</a></button>
+            {% else %}
+            <button class="btn btn-secondary" type="button"><a href="{% url 'accounts:login' %}" style="color: aliceblue;">وارد حساب کاربری خود شوید</a></button>
+            <button class="btn btn-secondary" type="button"><a href="{% url 'shop:index' %}" style="color: aliceblue;">بازگشت به فروشگاه</a></button>
+
+            {% endif %}
+            </div>
+            
+        </div>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br>
+<script>
+$(document).on('click','#add-cart', function(e){
+    e.preventDefault();
+    $.ajax({
+        type: 'POST',
+        url: '{% url 'cart:cart_add' %}',
+        data:{
+            product_id: $('#add-cart').val(),
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            action: 'post'
+        },
+
+        success: function(json) {
+            //console.log(json)
+            document.getElementById('cart_quantity').textContent = json.qty
+        },
+        error: function(xhr, errmsg, err) {
+
+        }
+
+    })
+})
+</script>
+
+{% endblock %}

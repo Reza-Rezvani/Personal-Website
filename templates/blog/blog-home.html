@@ -4,17 +4,17 @@
 {% block content %}
 
 <!-- start banner Area -->
-<section class="banner-area relative blog-home-banner" id="home">
+<!-- start banner Area -->
+<section class="relative about-banner">
 	<div class="overlay overlay-bg"></div>
 	<div class="container">
 		<div class="row d-flex align-items-center justify-content-center">
-			<div class="about-content blog-header-content col-lg-12">
-				<h1 class="text-white">
-					Dude You’re Getting
-					a Telescope
+			<div class="about-content col-lg-12">
+				<h1 class="text-white" style="font-family: IRANSansX;">
+					وبلاگ
 				</h1>
-				<p class="text-white">
-					There is a moment in the life of any aspiring astronomer that it is time to buy that first
+				<p class="text-white link-nav" style="font-family: IRANSansX;"><a href="{% url 'website:index' %}">صفحه اصلی </a> <span class="lnr lnr-arrow-right"></span>
+					<a href="{% url 'blog:index' %}" style="font-family: IRANSansX;">وبلاگ</a>
 				</p>
 			</div>
 		</div>
@@ -32,13 +32,13 @@
 						<div class="overlay overlay-bg"></div>
 						<a href="#" target="_blank">
 							<div class="thumb">
-								<img class="content-image img-fluid d-block mx-auto" src="{% static 'img/blog/cat-widget1.jpg' %}"
+								<img class="content-image img-fluid d-block mx-auto" src="{% static 'img/blog/museum.jpg' %}"
 									alt="">
 							</div>
 							<div class="content-details">
-								<h4 class="content-title mx-auto text-uppercase">Social life</h4>
+								<h4 class="content-title mx-auto text-uppercase" style="font-family: IRANSansX;">موزه و افتخارات</h4>
 								<span></span>
-								<p>Enjoy your social life together</p>
+								<p style="font-family: IRANSansX;">نمایش موزه و افتخارات هنرستان</p>
 							</div>
 						</a>
 					</div>
@@ -50,13 +50,13 @@
 						<div class="overlay overlay-bg"></div>
 						<a href="#" target="_blank">
 							<div class="thumb">
-								<img class="content-image img-fluid d-block mx-auto" src="{% static 'img/blog/cat-widget2.jpg' %}"
+								<img class="content-image img-fluid d-block mx-auto" src="{% static 'img/blog/article.jpg' %}"
 									alt="">
 							</div>
 							<div class="content-details">
-								<h4 class="content-title mx-auto text-uppercase">Politics</h4>
+								<h4 class="content-title mx-auto text-uppercase" style="font-family: IRANSansX;">سر در ، ورودی</h4>
 								<span></span>
-								<p>Be a part of politics</p>
+								<p style="font-family: IRANSansX;">سر در ، ورودی هنرستان</p>
 							</div>
 						</a>
 					</div>
@@ -68,13 +68,13 @@
 						<div class="overlay overlay-bg"></div>
 						<a href="#" target="_blank">
 							<div class="thumb">
-								<img class="content-image img-fluid d-block mx-auto" src="{% static 'img/blog/cat-widget3.jpg' %}"
+								<img class="content-image img-fluid d-block mx-auto" src="{% static 'img/blog/yard.jpg' %}"
 									alt="">
 							</div>
 							<div class="content-details">
-								<h4 class="content-title mx-auto text-uppercase">Food</h4>
+								<h4 class="content-title mx-auto text-uppercase" style="font-family: IRANSansX;">حیاط و پارکینگ</h4>
 								<span></span>
-								<p>Let the food be finished</p>
+								<p style="font-family: IRANSansX;">فضای حیاط و پارکینگ وسیع هنرستان</p>
 							</div>
 						</a>
 					</div>
@@ -86,7 +86,7 @@
 <!-- End top-category-widget Area -->
 
 <!-- Start post-content Area -->
-<section class="post-content-area">
+<section class="post-content-area" style="font-family: IRANSansX;">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8 posts-list">
@@ -105,9 +105,9 @@
 									class="lnr lnr-user"></span></p>
 							<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{post.published_date|date:"d M Y"}}</a> <span
 									class="lnr lnr-calendar-full"></span></p>
-							<p class="view col-lg-12 col-md-12 col-6"><a href="#">{{post.counted_views}} Views</a> <span
+							<p class="view col-lg-12 col-md-12 col-6"><a href="#">بازدید {{post.counted_views}}</a> <span
 									class="lnr lnr-eye"></span></p>
-							<p class="comments col-lg-12 col-md-12 col-6"><a href="#">{% comments_count post.id %} Comments</a> <span
+							<p class="comments col-lg-12 col-md-12 col-6"><a href="#">{% comments_count post.id %} کامنت</a> <span
 									class="lnr lnr-bubble"></span></p>
 						</div>
 					</div>
@@ -116,12 +116,12 @@
 							<img class="img-fluid" src="{{post.image.url}}" alt="">
 						</div>
 						<a class="posts-title" href="{% url 'blog:single' pid=post.id %}">
-							<h3>{{post.title}}</h3>
+							<h3 style="font-family: IRANSansX;text-align: right;">{{post.title}}</h3>
 						</a>
-						<p class="excert">
+						<p class="excert" style="font-family: IRANSansX;text-align: right;">
 							{{post.content|truncatewords:2}}
 						</p>
-						<a href="{% url 'blog:single' pid=post.id %}" class="primary-btn">View More</a>
+						<a href="{% url 'blog:single' pid=post.id %}" class="primary-btn" style="text-align: center;">... بیشتر</a>
 					</div>
 				</div>
 				{% endfor %}

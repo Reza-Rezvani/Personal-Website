@@ -18,9 +18,9 @@
                     </ul>
                 </div>
                 <a href="{% url 'blog:single' pid=post.id %}">
-                    <h4 class="title">{{post.title}}</h4>
+                    <h4 class="title" style="font-family: IRANSansX; text-align: right;padding-right: 15px;">{{post.title}}</h4>
                 </a>
-                <p>
+                <p style="font-family: IRANSansX; text-align: center;">
                    {{post.content}}
                 </p>
                 <h6 class="date">{{post.published_date|date:"d M Y"}}</h6>

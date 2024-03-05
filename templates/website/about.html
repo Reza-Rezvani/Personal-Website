@@ -9,11 +9,11 @@
 	<div class="container">
 		<div class="row d-flex align-items-center justify-content-center">
 			<div class="about-content col-lg-12">
-				<h1 class="text-white">
-					About Us
+				<h1 class="text-white" style="font-family: IRANSansX;">
+					درباره ما
 				</h1>
-				<p class="text-white link-nav"><a href="index.html">Home </a> <span class="lnr lnr-arrow-right"></span>
-					<a href="about.html"> About Us</a>
+				<p class="text-white link-nav"><a href="{% url 'website:index' %}" style="font-family: IRANSansX;">صفحه اصلی </a> <span class="lnr lnr-arrow-right"></span>
+					<a href="{% url 'website:about' %}" style="font-family: IRANSansX;">درباره ما</a>
 				</p>
 			</div>
 		</div>
@@ -26,16 +26,13 @@
 	<div class="container">
 		<div class="row align-items-center">
 			<div class="col-lg-6 info-left">
-				<img class="img-fluid" src="{% static 'img/about/info-img.jpg' %}" alt="">
-			</div>
-			<div class="col-lg-6 info-right">
-				<h6>About Us</h6>
-				<h1>Who We Are?</h1>
-				<p>
-					Here, I focus on a range of items and features that we use in life without giving them a second
-					thought. such as Coca Cola. Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-					incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-					ullamco.
+				<img class="img-fluid" src="{% static 'img/flag.jpg' %}" alt="">
+			</div style="font-family: IRANSansX;">
+			<div class="col-lg-6 info-right" style="font-family: IRANSansX;">
+				<h6 style="font-family: IRANSansX;text-align: center;">درباره ما</h6>
+				<h1 style="font-family: IRANSansX;text-align: center;">ما که هستیم؟</h1>
+				<p style="text-align: right;padding-top: 2px;padding: 10px;font-size: medium;line-height: 30px;">
+					تشکر برای وقت گران بهایتان<br>هنرستان شهید ابراهیم فیاضی یکی از بهترین هنرستان های استان مازندران واقع در شهرستان نور می باشد. این هنرستان با همت بسیاری از دوستان، خیرین و... همچنین به همت مدیریت محترم جناب آقای دیوسالار و همکارانش ساخته شده و مدیریت میشود. هنرستان دارای ۲۵۵ هنرجو و تعدادی اساتید دلسوز میباشد. عناوین برتری در مسابقات فجر و مسابقات علمی از افتخارات هنرستان است
 				</p>
 			</div>
 		</div>
@@ -44,72 +41,7 @@
 <!-- End about-info Area -->
 
 <!-- Start other-issue Area -->
-<section class="other-issue-area section-gap">
-	<div class="container">
-		<div class="row d-flex justify-content-center">
-			<div class="menu-content pb-70 col-lg-9">
-				<div class="title text-center">
-					<h1 class="mb-10">Other issues we can help you with</h1>
-					<p>We all live in an age that belongs to the young at heart. Life that is.</p>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-3 col-md-6">
-				<div class="single-other-issue">
-					<div class="thumb">
-						<img class="img-fluid" src="{% static 'img/o1.jpg' %}" alt="">
-					</div>
-					<a href="#">
-						<h4>Rent a Car</h4>
-					</a>
-					<p>
-						The preservation of human life is the ultimate value, a pillar of ethics and the foundation.
-					</p>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6">
-				<div class="single-other-issue">
-					<div class="thumb">
-						<img class="img-fluid" src="{% static 'img/o2.jpg' %}" alt="">
-					</div>
-					<a href="#">
-						<h4>Cruise Booking</h4>
-					</a>
-					<p>
-						I was always somebody who felt quite sorry for myself, what I had not got compared.
-					</p>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6">
-				<div class="single-other-issue">
-					<div class="thumb">
-						<img class="img-fluid" src="{% static 'img/o3.jpg' %}" alt="">
-					</div>
-					<a href="#">
-						<h4>To Do List</h4>
-					</a>
-					<p>
-						The following article covers a topic that has recently moved to center stage–at least it seems.
-					</p>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6">
-				<div class="single-other-issue">
-					<div class="thumb">
-						<img class="img-fluid" src="{% static 'img/o4.jpg' %}" alt="">
-					</div>
-					<a href="#">
-						<h4>Food Features</h4>
-					</a>
-					<p>
-						There are many kinds of narratives and organizing principles. Science is driven by evidence.
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+
 <!-- End other-issue Area -->
 
 {% endblock %}

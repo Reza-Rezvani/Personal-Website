@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% load humanize %}
+
+
+<!-- start banner Area -->
+<section class="about-banner relative">
+	<div class="overlay overlay-bg"></div>
+	<div class="container">
+		<div class="row d-flex align-items-center justify-content-center">
+			<div class="about-content col-lg-12">
+				<h1 class="text-white" style="font-family: IRANSansX;">
+					فروشگاه
+				</h1>
+				<p class="text-white link-nav"><a href="{% url 'website:index' %}" style="font-family: IRANSansX;">صفحه اصلی </a> <span class="lnr lnr-arrow-right"></span>
+					<a href="{% url 'shop:index' %}" style="font-family: IRANSansX;"> فروشگاه</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End banner Area -->
+
+<!-- Start about-info Area -->
+<section class="about-info-area section-gap">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-6 info-left">
+				<img class="img-fluid" src="{% static 'img/flash.jpg' %}" alt="">
+			</div>
+			<div class="col-lg-6 info-right" style="font-family: IRANSansX;">
+				<h6 style="font-family: IRANSansX;text-align: center;">فروشگاه</h6>
+				<h1 style="font-family: IRANSansX;text-align: center;">ما چه میفروشیم؟</h1>
+				<p style="text-align: center;font-family: IRANSansX;">
+					ما برخی از محصولات درخشان را در وب سایت خود می فروشیم که می توانید در زیر مشاهده کنید
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End about-info Area -->
+
+<!-- Start other-issue Area -->
+<section class="other-issue-area section-gap">
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="menu-content pb-70 col-lg-9">
+				<div class="title text-center">
+					<h1 class="mb-10" style="font-family: IRANSansX;">: برخی از مهمترین محصولات ما</h1>
+					
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			{% for item in products %}
+
+			<div class="col-lg-3 col-md-6" style="margin-top: 40px;margin-bottom: 10px;">
+				<div class="single-other-issue">
+					<div class="thumb">
+						<img class="img-fluid" src="{{ item.picture.url }}" alt="">
+					</div>
+					<a href="#">
+						<h4 style="font-family: IRANSansX; text-align:right;padding-right: 15px;">{{item.name}}</h4>
+					</a>
+					<p style="font-family: IRANSansX; text-align:center;">
+						محصولی مربوط به رشته های هنرستان
+					</p>
+					<h5 style="color: rgb(211, 52, 52); text-align:center;">
+						{{item.price | intcomma}} <span style="font-family: IRANSansX;">تومان</span>
+					</h5>
+					<br>
+					<div class="text-center" style="font-family: IRANSansX;"><a class="btn btn-outline-dark mt-auto" href="{% url 'shop:product' item.id %}">صفحه محصول</a></div>
+				</div>
+			</div>
+
+			{% endfor %}
+		</div>
+	</div>
+</section>
+<!-- End other-issue Area -->
+
+{% endblock %}
