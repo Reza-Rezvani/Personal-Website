@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 {% load humanize %}
+{% load shop_tags %}
 
 
 <!-- start banner Area -->
@@ -33,26 +34,26 @@
 				<h6 style="font-family: IRANSansX;text-align: center;">فروشگاه</h6>
 				<h1 style="font-family: IRANSansX;text-align: center;">ما چه میفروشیم؟</h1>
 				<p style="text-align: center;font-family: IRANSansX;">
-					ما برخی از محصولات درخشان را در وب سایت خود می فروشیم که می توانید در زیر مشاهده کنید
+					ما برخی از محصولات مهم و درخشان خود را که توسط هنرجویان ساخته شده یا از افتخارات هنرستان است و یا محصولات مربوط به رشته های مختلف را میفروشیم که شما آنها را در زیر مشاهده میکنید.  تنها نکته این است که شما توانایی خرید به تعداد بیشتر از یکی را ندارید  
 				</p>
+				
 			</div>
 		</div>
 	</div>
 </section>
+<hr>
 <!-- End about-info Area -->
 
 <!-- Start other-issue Area -->
 <section class="other-issue-area section-gap">
 	<div class="container">
-		<div class="row d-flex justify-content-center">
+		<div class="row d-flex justify-content-center" >
 			<div class="menu-content pb-70 col-lg-9">
-				<div class="title text-center">
-					<h1 class="mb-10" style="font-family: IRANSansX;">: برخی از مهمترین محصولات ما</h1>
-					
-				</div>
+
 			</div>
-		</div>
+		</div>{% productcategories %}
 		<div class="row">
+			
 			{% for item in products %}
 
 			<div class="col-lg-3 col-md-6" style="margin-top: 40px;margin-bottom: 10px;">
@@ -75,6 +76,7 @@
 			</div>
 
 			{% endfor %}
+			
 		</div>
 	</div>
 </section>

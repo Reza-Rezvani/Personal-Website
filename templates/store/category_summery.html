@@ -1,0 +1,27 @@
+{% load static %}
+
+<div>
+<div class="col-lg-4 sidebar-widgets" style="margin-left: 350px;">
+    <div class="widget-wrap">
+        <div class="single-sidebar-widget post-category-widget" style="font-family: IRANSansX;">
+            <h4 class="category-title" style="font-family: IRANSansX;">دسته بندی محصولات</h4>
+            <br>
+            <ul class="cat-list">
+                {% for name,count in categories.items %}
+                <li>
+                    <a href="{% url 'shop:category-summery' cat_name=name %}" class="d-flex justify-content-between">
+                        <p>{{name}}</p>
+                        <p>{{count}}</p>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            
+        </div>
+    </div>
+</div>
+				<div class="title text-center" style="margin-bottom: 40px;">
+					<h1 class="mb-10" style="font-family: IRANSansX;">: برخی از مهمترین محصولات ما</h1>
+					
+				</div>
+</div>

@@ -85,7 +85,7 @@
 				-->
 				
 				<div class="comments-area">
-					<h4 style="font-family: IRANSansX;">{{ comments|length }} : کامنت</h4>
+					<h4 style="font-family: IRANSansX;">{{ comments|length }} : دیدگاه</h4>
 					<div class="comment-list">
 					{% for comment in comments %}
 					
@@ -108,12 +108,12 @@
 							</div>-->
 						</div>
 						{% empty %}
-						<h5 style="font-family: IRANSansX;text-align: center;">کامنتی گذاشته نشده است . اولین کامنت را شما بگذارید</h5>
+						<h5 style="font-family: IRANSansX;text-align: center;">دیدگاهی ثبت نشده است . اولین نظر را شما بنویسید</h5>
 					{% endfor %}
 					</div>
 				</div>
 				<div class="comment-form" style="font-family: IRANSansX;">
-					<h4 style="font-family: IRANSansX;">کامنت بگذارید</h4>
+					<h4 style="font-family: IRANSansX;">دیدگاهتان را بنویسید</h4>
 					<form method="post" action='{% url "blog:single" pid=post.id %}'>
 						{% csrf_token %}
 						<input type="hidden" name="post" value="{{post.id}}">
@@ -141,7 +141,7 @@
 								onfocus="this.placeholder = ''" onblur="this.placeholder = 'پیام'"
 								required=""></textarea>
 						</div>
-						<button type="submit" class="primary-btn text-uppercase">تایید کامنت</button>
+						<button type="submit" class="primary-btn text-uppercase">تایید دیدگاه</button>
 					</form>
 					{% if messages %}
 			{% for message in messages %}
