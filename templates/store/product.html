@@ -31,22 +31,43 @@
         <div class="col-md-4">
             <img src="{{ product.picture.url }}" class="img-fluid rounded-start" alt="...">
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8" style="font-family: IRANSansX;">
             <div class="card-body" style="font-family: IRANSansX;">
             <h2 class="card-title" style="font-family: IRANSansX; text-align:right;">{{ product.name }}</h2>
             <p class="card-text" style="font-family: IRANSansX; text-align:right;margin-right: 10px;">{{ product.description }}</p>
-            <h6 style="color: rgb(211, 52, 52);">
-               <span style="font-family: IRANSansX;">قیمت</span> :  {{product.price | intcomma}} <span style="font-family: IRANSansX;">تومان</span> 
+            {% if product.is_sale %}
+            <h6 style="color: rgb(211, 52, 52); text-align: right;">
+               <span style="font-family: IRANSansX;">قیمت</span> :  {{product.sale_price | intcomma}} <span style="font-family: IRANSansX;">تومان</span> 
             </h6>
+            {% else %}
+            <h6 style="color: rgb(211, 52, 52); text-align: right;">
+                <span style="font-family: IRANSansX;">قیمت</span> :  {{product.price | intcomma}} <span style="font-family: IRANSansX;">تومان</span> 
+             </h6>
+            {% endif %}
+            <br>
+            {% if messages %}
+			{% for message in messages %}
+			  <div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}">{{ message|safe }}</div>
+			{% endfor %}
+		  {% endif %}
+            <p style="text-align: right; font-family: IRANSansX;"> :تعداد </p>
+            <select id="cart-qty" style="text-align: right;margin-left: 85%;">
+                <option value="1">۱</option>
+                <option value="2">۲</option>
+                <option value="3">۳</option>
+              </select>
+            
+            </div>
+
             <br>
             {% if request.user.is_authenticated %}
-            <button class="btn btn-secondary" type="button" value="{{ product.id }}" id="add-cart">اضافه به سبد خرید</button>
+            <button class="btn btn-primary" type="button" value="{{ product.id }}" id="add-cart">اضافه به سبد خرید</button>
             <button class="btn btn-secondary" type="button"><a href="{% url 'shop:index' %}" style="color: aliceblue;">بازگشت به فروشگاه</a></button>
             {% else %}
-            <button class="btn btn-secondary" type="button"><a href="{% url 'accounts:login' %}" style="color: aliceblue;">وارد حساب کاربری خود شوید</a></button>
+            <button class="btn btn-info" type="button"><a href="{% url 'accounts:login' %}" style="color: aliceblue;">وارد حساب کاربری خود شوید</a></button>
             <button class="btn btn-secondary" type="button"><a href="{% url 'shop:index' %}" style="color: aliceblue;">بازگشت به فروشگاه</a></button>
 
-            {% endif %}
+            {% endif %} <br><br>
             </div>
             
         </div>
@@ -62,6 +83,7 @@ $(document).on('click','#add-cart', function(e){
         url: '{% url 'cart:cart_add' %}',
         data:{
             product_id: $('#add-cart').val(),
+            product_qty: $('#cart-qty option:selected').text(),
             csrfmiddlewaretoken: '{{ csrf_token }}',
             action: 'post'
         },
@@ -69,6 +91,7 @@ $(document).on('click','#add-cart', function(e){
         success: function(json) {
             //console.log(json)
             document.getElementById('cart_quantity').textContent = json.qty
+            location.reload()
         },
         error: function(xhr, errmsg, err) {
 

@@ -44,7 +44,7 @@
                     <div class="col-lg-6 col-sm-6 col-6 header-top-left" style="margin: 3px;">
                         <ul>
                             {% if request.user.is_authenticated %}
-                            <li><a href="" style="font-family: IRANSansX; font-size: large ;">وارد شد {{request.user.username}} کاربر</a></li>
+                            <li><a href="" style="font-family: IRANSansX; font-size: large ;">کاربر {{request.user.username}} وارد شد</a></li>
                             <li><a href="{% url 'accounts:logout' %}" style="font-family: IRANSansX; font-size: large ;">خروج</a></li>
                             {% else %}
                             <li><a href="{% url 'accounts:login' %}" style="font-family: IRANSansX; font-size: large ;">ورود</a></li>
@@ -70,12 +70,12 @@
                 <div id="logo">
                     <!--<a href="{% url 'website:index' %}" style="color: aliceblue; font-family: IRANSansX; font-size: large ;">هنرستان فیاضی</a>-->
                         <form class="d-flex" style="font-family: IRANSansX;">
-                            <a href="{% url 'cart:cart_summery' %}" class="btn btn-outline-dark">
+                            <a href="{% url 'cart:cart_summery' %}" class="btn btn-primary">
                                 <i class="bi-cart-fill me-1" style="color:aliceblue;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                                     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
-                                  </svg> خرید </i>
+                                  </svg> </i>
                                 
-                                <span class="badge bg-dark text-white ms-1 rounded-pill" id="cart_quantity">{{ cart|length }}</span>
+                                <span class="" id="cart_quantity">{{ cart|length }}</span>
                             </a>
                         </form>
                 </div>

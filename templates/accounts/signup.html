@@ -151,10 +151,12 @@ button{
         <input type="text" name="username" placeholder="نام کاربری خود را وارد کنید" required autofocus>
 
         <label for="inputPassword">: رمز عبور</label>
-        <input type="password" name="password1" placeholder="رمز عبور را وارد کنید" required>
+        <input type="password" name="password1" placeholder="رمز عبور را وارد کنید" required
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+        title="رمز عبور باید حداقل یک عدد و یک حرف بزرگ و کوچک و حداقل 8 کاراکتر یا بیشتر داشته باشد.">
 
         <label for="inputPassword">: تکرار رمز عبور</label>
-        <input type="password" name="password2" placeholder="رمز عبور را تکرار کنید" required>
+        <input type="password" name="password2" placeholder="رمز عبور را تکرار کنید" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
       <br>
         <button type="submit" style="font-family: IRANSansX;">تایید</button>
         <button type="button"><a href="{% url 'website:index' %}" style="color: aliceblue;text-decoration: none;">بازگشت به صفحه اصلی</a></button>

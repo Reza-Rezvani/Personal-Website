@@ -20,7 +20,34 @@
     </div>
 </header>
 <br><br><br>
+
 {% if cart_products %}
+<div class="container">
+    <div class="card mb-3">
+        <div class="row g-0">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+            <h2 class="card-title" style="font-family: IRANSansX; text-align:right;"></h2>
+            <p class="card-text" style="font-family: IRANSansX; text-align:right;margin-right: 10px;"></p>
+            
+            <h3 style="color: rgb(66, 53, 53); text-align: right;">
+               <span style="font-family: IRANSansX;">محاسبه جمع قیمت کالاها</span> :  <span style="font-family: IRANSansX;">{{total | intcomma}}</span> 
+            </h3>
+
+            <br><br><br><br><br>
+            
+            <button class="btn btn-success" type="button"><a href="#" style="color: aliceblue;font-family: IRANSansX;">ادامه خرید</a></button>
+            <button class="btn btn-secondary" type="button"><a href="{% url 'website:index' %}" style="color: aliceblue;font-family: IRANSansX;">بازگشت به صفحه اصلی</a></button>
+            
+         
+
+            </div>
+        </div>
+        </div>
+    </div>
+</div><br><hr style="background-color: rgb(186, 108, 108);"><br>
 {% for product in cart_products %}
 <div class="container">
     <div class="card mb-3">
@@ -32,14 +59,35 @@
             <div class="card-body">
             <h2 class="card-title" style="font-family: IRANSansX; text-align:right;">{{ product.name }}</h2>
             <p class="card-text" style="font-family: IRANSansX; text-align:right;margin-right: 10px;">{{ product.description }}</p>
-            <h6 style="color: rgb(211, 52, 52);">
+            
+            {% if product.is_sale %}
+            <h6 style="color: rgb(211, 52, 52); text-align: right;">
+               <span style="font-family: IRANSansX;">قیمت</span> :  {{product.sale_price | intcomma}} <span style="font-family: IRANSansX;">تومان</span> 
+            </h6>
+            {% else %}
+            <h6 style="color: rgb(211, 52, 52); text-align: right;">
                 <span style="font-family: IRANSansX;">قیمت</span> :  {{product.price | intcomma}} <span style="font-family: IRANSansX;">تومان</span> 
              </h6>
+            {% endif %}
+             <br>
+             <p style="text-align: right;"> :تعداد 
+                <select id="select{{product.id}}" style="text-align: right;margin-left: 85%;">
+                {% for key, value in quantities.items %}
+                    {% if key == product.id|slugify %}
+                <option selected>{{ value }}</option> 
+                    {% endif %}
+                {% endfor %}
+                    <option value="1">۱</option>
+                    <option value="2">۲</option>
+                    <option value="3">۳</option>
+                    <option value="4">۴</option>
+                    <option value="5">۵</option>
+                  </select>
+                </p>
             <br>
             
-
             <button class="btn btn-danger delete-product" type="button" data-index="{{ product.id }}" style="font-family: IRANSansX;">حذف محصول</button>
-            <button class="btn btn-secondary" type="button" style="font-family: IRANSansX;margin-left: 6px;">خرید محصول</button>
+            <button class="btn btn-primary update-cart" type="button" data-index="{{ product.id }}" style="font-family: IRANSansX;">ویرایش محصول</button>
 
             </div>
         </div>
@@ -78,6 +126,32 @@
     
         })
     })
+    $(document).on('click','.update-cart', function(e){
+        e.preventDefault();
+        var productid = $(this).data('index');
+        
+        $.ajax({
+            type: 'POST',
+            url: '{% url 'cart:cart_update' %}',
+            data:{
+                product_id: $(this).data('index'),
+                product_qty: $('#select' + productid + ' option:selected').text(),
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'post'
+            },
+    
+            success: function(json) {
+                //console.log(json)
+                //document.getElementById('cart_quantity').textContent = json.qty
+                location.reload();
+            },
+            error: function(xhr, errmsg, err) {
+    
+            }
+    
+        })
+    })
+    
     </script>
     
 

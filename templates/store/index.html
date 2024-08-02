@@ -55,26 +55,49 @@
 		<div class="row">
 			
 			{% for item in products %}
-
+				{% if item.is_sale %}
 			<div class="col-lg-3 col-md-6" style="margin-top: 40px;margin-bottom: 10px;">
 				<div class="single-other-issue">
 					<div class="thumb">
 						<img class="img-fluid" src="{{ item.picture.url }}" alt="">
 					</div>
-					<a href="#">
-						<h4 style="font-family: IRANSansX; text-align:right;padding-right: 15px;">{{item.name}}</h4>
+					<a href="{% url 'shop:product' item.id %}">
+						<h4 style="font-family: IRANSansX; text-align:right;padding-right: 15px;">{{item.name}}</h4> 
 					</a>
 					<p style="font-family: IRANSansX; text-align:center;">
 						محصولی مربوط به رشته های هنرستان
 					</p>
 					<h5 style="color: rgb(211, 52, 52); text-align:center;">
-						{{item.price | intcomma}} <span style="font-family: IRANSansX;">تومان</span>
+				    <span style="font-family: IRANSansX; text-align:center;">تخفیف</span>  <strike style="color: black;">{{item.price | intcomma}} <span style="font-family: IRANSansX;">تومان</span></strike><br>
+						{{item.sale_price | intcomma}} <span style="font-family: IRANSansX;">تومان</span> 
 					</h5>
 					<br>
 					<div class="text-center" style="font-family: IRANSansX;"><a class="btn btn-outline-dark mt-auto" href="{% url 'shop:product' item.id %}">صفحه محصول</a></div>
 				</div>
 			</div>
-
+				{% else%}
+				<div class="col-lg-3 col-md-6" style="margin-top: 40px;margin-bottom: 10px;">
+					<div class="single-other-issue">
+						<div class="thumb">
+							<img class="img-fluid" src="{{ item.picture.url }}" alt="">
+						</div>
+						<a href="{% url 'shop:product' item.id %}">
+							<h4 style="font-family: IRANSansX; text-align:right;padding-right: 15px;">{{item.name}}</h4> 
+						</a>
+						<p style="font-family: IRANSansX; text-align:center;">
+							محصولی مربوط به رشته های هنرستان
+						</p>
+						<h5 style="color: rgb(211, 52, 52); text-align:center;">
+							{{item.price | intcomma}} <span style="font-family: IRANSansX;">تومان</span>
+						</h5>
+						<br>
+						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+							<div class="text-center" style="font-family: IRANSansX;"><a class="btn btn-outline-dark mt-auto" href="{% url 'shop:product' item.id %}">صفحه محصول</a></div>
+						</div>
+						
+					</div>
+				</div>
+				{% endif %}
 			{% endfor %}
 			
 		</div>
