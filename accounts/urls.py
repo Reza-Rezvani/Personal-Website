@@ -12,4 +12,5 @@ urlpatterns = [
     # logout
     path('signup/',views.signup_view,name='signup'),
     # registration / signup
+    path('update_user/',views.update_user,name='update_user'),
 ]

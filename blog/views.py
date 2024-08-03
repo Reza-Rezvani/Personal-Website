@@ -35,9 +35,9 @@ def blog_single(request, pid):
         form = CommentForm(request.POST)
         if form.is_valid(): 
             form.save()
-            messages.add_message(request,messages.SUCCESS,'your comment submited successfull')
+            messages.add_message(request,messages.SUCCESS,'دیدگاه شما با موفقیت ثبت شد')
         else:
-            messages.add_message(request,messages.ERROR,'your comment didnt submited')
+            messages.add_message(request,messages.ERROR,'دیدگاه شما ثبت نشد . لطفا دوباره تلاش کنید')
     posts = Post.objects.filter(status=1)
     post = get_object_or_404(posts, pk=pid)
     if not post.login_require:

@@ -42,7 +42,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-sm-6 col-6 header-top-left" style="margin: 3px;">
-                        <ul>
+                        <!--<ul>
                             {% if request.user.is_authenticated %}
                             <li><a href="" style="font-family: IRANSansX; font-size: large ;">کاربر {{request.user.username}} وارد شد</a></li>
                             <li><a href="{% url 'accounts:logout' %}" style="font-family: IRANSansX; font-size: large ;">خروج</a></li>
@@ -50,7 +50,7 @@
                             <li><a href="{% url 'accounts:login' %}" style="font-family: IRANSansX; font-size: large ;">ورود</a></li>
                             <li><a href="{% url 'accounts:signup' %}" style="font-family: IRANSansX; font-size: large ;">ثبت نام</a></li>
                             {% endif %}
-                        </ul>
+                        </ul>-->
                     </div>
 
                     <!--<div class="col-lg-6 col-sm-6 col-6 header-top-right">
@@ -77,10 +77,31 @@
                                 
                                 <span class="" id="cart_quantity">{{ cart|length }}</span>
                             </a>
+                            
+                            {% if request.user.is_authenticated %}
+                            <a href="{% url 'accounts:logout' %}" class="btn btn-secondary" style="margin-left: 25%;">
+                                <i class="bi-cart-fill me-1" style="color:aliceblue;">خروج</i>
+                            </a>
+                            {% else %}
+                            <a href="{% url 'accounts:login' %}" class="btn btn-secondary" style="margin-left: 25%;">
+                                <i class="bi-cart-fill me-1" style="color:aliceblue;">ورود</i>
+                            </a>
+                            <a href="{% url 'accounts:signup' %}" class="btn btn-secondary" style="margin-left: 7%;">
+                                <i class="bi-cart-fill me-1" style="color:aliceblue;">ثبت نام</i>
+                            </a>
+                            {% endif %}
+                        </form>
+                </div>
+                <div id="logo">
+                    <!--<a href="{% url 'website:index' %}" style="color: aliceblue; font-family: IRANSansX; font-size: large ;">هنرستان فیاضی</a>-->
+                        <form class="d-flex" style="font-family: IRANSansX;">
+                           
                         </form>
                 </div>
                 <nav id="nav-menu-container">
                     <ul class="nav-menu">
+
+                        
                         <li><a href="{% url 'website:index' %}" style="font-family: IRANSansX; font-size: large ;">صفحه اصلی</a></li>
                         <li><a href="{% url 'shop:index' %}" style="font-family: IRANSansX; font-size: large ;">فروشگاه</a></li>
                         <li><a href="{% url 'blog:index' %}" style="font-family: IRANSansX; font-size: large ;">وبلاگ</a></li>

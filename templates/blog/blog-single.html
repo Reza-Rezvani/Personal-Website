@@ -92,15 +92,15 @@
 						<div class="single-comment justify-content-between d-flex">
 							<div class="user justify-content-between d-flex">
 								<div class="thumb">
-									<img src="{% static 'img/blog/c5.jpg' %}" alt="">
 								</div>
 								<div class="desc">
-									<h5><a href="#">{{comment.name}}</a></h5>
+									<h5>{{comment.name}}</h5>
 									<p class="date">{{comment.created_date|naturalday}}</p>
 									<p class="comment">
 										{{comment.message}}
 									</p>
 								</div>
+								
 							</div>
 							<!--
 							<div class="reply-btn">
@@ -144,10 +144,10 @@
 						<button type="submit" class="primary-btn text-uppercase">تایید دیدگاه</button>
 					</form>
 					{% if messages %}
-			{% for message in messages %}
-			  <div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}">{{ message|safe }}</div>
-			{% endfor %}
-		  {% endif %}
+					{% for message in messages %}
+					  <div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}">{{ message|safe }}</div>
+					{% endfor %}
+				  {% endif %}
 		
 		  {% if form.errors %}
 			<div class="alert alert-error">
