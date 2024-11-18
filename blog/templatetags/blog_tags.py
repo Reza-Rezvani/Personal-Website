@@ -6,7 +6,7 @@ register = template.Library()
 
 @register.simple_tag(name='totalposts')
 def function():
-    posts = Post.objects.filter(status=1).conunt()
+    posts = Post.objects.filter(status=1).count()
     return posts
 
 @register.simple_tag(name='comments_count')
